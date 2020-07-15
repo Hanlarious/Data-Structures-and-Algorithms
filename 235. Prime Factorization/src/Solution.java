@@ -11,10 +11,14 @@ public class Solution {
     public List<Integer> primeFactorization(int num) {
         List<Integer> factors = new ArrayList<Integer>();
         for(int i = 2; i * i <= num; i++){
-            if(num % i == 0){
+            while(num % i == 0){
                 factors.add(i);
+                num /= i;
             }
-        } 
-        return res;
+        }
+        if(num != 1){
+            factors.add(num);
+        }
+        return factors;
     }
 }
