@@ -9,7 +9,14 @@ public class Solution {
           this.left = this.right = null;
       }
   }
+    private int sum = 0;
     public List<List<Integer>> binaryTreePathSum(TreeNode root, int target) {
-        // write your code here
+
+    }
+    public int getSum(TreeNode node){
+        if (node == null){
+            return 0;
+        }
+        sum += node.val;
     }
 }
