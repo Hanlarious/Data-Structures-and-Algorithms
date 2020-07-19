@@ -10,24 +10,18 @@ public class Solution {
     }
 
     public boolean isValidBST(TreeNode root) {
-
-
-        if (root == null || (root.left == null && root.right == null)){
-            return true;
-        }
-        if (root.left.val >= root.val){
-            return false;
-        }
-        if (root.right.val <= root.val){
-            return false;
-        }
-        return (isValidBST(root.left) && isValidBST(root.right));
+        // write your code here
+        return divConq(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
-    public boolean helper(TreeNode root, long min, long max){
+
+    private boolean divConq(TreeNode root, long min, long max){
         if (root == null){
             return true;
         }
-        if ()
-
+        if (root.val <= min || root.val >= max){
+            return false;
+        }
+        return divConq(root.left, min, Math.min(max, root.val)) &&
+                divConq(root.right, Math.max(min, root.val), max);
     }
 }
