@@ -10,27 +10,43 @@ public class Stack {
     Queue<Integer> q2 = new LinkedList<>();
 
     public void push(int x) {
-        // write your code here
+        q1.add(x);
     }
 
     /*
      * @return: nothing
      */
     public void pop() {
-        // write your code here
+        if (q1.isEmpty()){
+            Queue temp = q1;
+            q1 = q2;
+            q2 = temp;
+        }
+        while (q1.size() > 1){
+            q2.add(q1.poll());
+        }
+        q1.poll();
     }
 
     /*
      * @return: An integer
      */
     public int top() {
-        // write your code here
+        if (q1.isEmpty()){
+            Queue temp = q1;
+            q1 = q2;
+            q2 = temp;
+        }
+        while (q1.size() > 1){
+            q2.add(q1.poll());
+        }
+        return q1.peek();
     }
 
     /*
      * @return: True if the stack is empty
      */
     public boolean isEmpty() {
-        // write your code here
+        return q1.isEmpty() && q2.isEmpty();
     }
 }
